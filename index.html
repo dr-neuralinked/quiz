@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz</title>
+<style>
+body { font-family: Arial, sans-serif; padding: 20px; background: #f7f7f7; }
+.container { max-width: 900px; margin: 0 auto; background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 6px 20px rgba(10,10,10,0.06);}
+.question { border:1px solid #eee; padding:12px; margin-bottom:12px; border-radius:8px;}
+.question strong { display:block; margin-bottom:8px; }
+.options label { display:block; margin:6px 0; cursor:pointer; padding:4px 8px; border-radius:6px;}
+.correct { background: #c8e6c9; border-left: 6px solid #2aa952; }
+.wrong { background: #ffcdd2; border-left: 6px solid #e04b5a; }
+.feedback { font-weight: bold; margin-top:5px; }
+#submitBtn, #retryBtn { margin-top: 20px; padding: 10px 15px; border-radius: 8px; border:1px solid #ddd; background:#fff; cursor:pointer;}
+#submitBtn:disabled { opacity:0.5; cursor:not-allowed; }
+#retryBtn { display:none; }
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Medical Quiz</h1>
+<div id="quizContainer"></div>
+<button id="submitBtn">Submit</button>
+<button id="retryBtn">Try Again</button>
+<div id="score"></div>
+</div>
+
+<script>
+// Convert CSV text to quiz data
+function csvToObjects(csv) {
+  if (!csv) return [];
+  const rows = [];
+  let cur = '', row = [], inQuotes = false;
+  for (let i = 0; i < csv.length; i++) {
+    const ch = csv[i];
+    if (ch === '"') {
+      if (inQuotes && csv[i+1] === '"') { cur += '"'; i++; }
+      else { inQuotes = !inQuotes; }
+    } else if (ch === ',' && !inQuotes) {
+      row.push(cur); cur = '';
+    } else if ((ch === '\n' || ch === '\r') && !inQuotes) {
+      if (ch === '\r' && csv[i+1] === '\n') continue;
+      row.push(cur); rows.push(row); row = []; cur = '';
+    } else { cur += ch; }
+  }
+  if (cur !== '' || row.length) { row.push(cur); rows.push(row); }
+  if (rows.length === 0) return [];
+  const headers = rows[0].map(h => String(h).trim().toLowerCase());
+  const out = [];
+  for (let r = 1; r < rows.length; r++) {
+    const rowVals = rows[r];
+    if (rowVals.join('').trim() === '') continue;
+    const obj = {};
+    for (let c = 0; c < headers.length; c++) {
+      obj[headers[c]] = rowVals[c] !== undefined ? String(rowVals[c]).trim() : '';
+    }
+    const options = [];
+    ['opt1','opt2','opt3','opt4'].forEach(k => { if(obj[k]) options.push(obj[k]); });
+    out.push({
+      question: obj.question || '',
+      options: options,
+      answer: obj.answer || ''
+    });
+  }
+  return out;
+}
+
+// Render quiz questions
+function renderQuiz(data) {
+  const container = document.getElementById('quizContainer');
+  container.innerHTML = '';
+  data.forEach((q,i) => {
+    const qDiv = document.createElement('div');
+    qDiv.className = 'question';
+    qDiv.innerHTML = `<strong>Q${i+1}. ${q.question}</strong>`;
+    const optDiv = document.createElement('div');
+    optDiv.className = 'options';
+    q.options.forEach((opt,j) => {
+      const letter = String.fromCharCode(65+j); // A,B,C,D
+      optDiv.innerHTML += `<label><input type="radio" name="q${i}" value="${opt}"> ${letter}. ${opt}</label>`;
+    });
+    qDiv.appendChild(optDiv);
+    const fb = document.createElement('div');
+    fb.className = 'feedback';
+    fb.id = `fb-${i}`;
+    qDiv.appendChild(fb);
+    container.appendChild(qDiv);
+  });
+}
+
+// Load CSV and render
+async function loadCSVandRender() {
+  try {
+    const res = await fetch('sample.csv', {cache: "no-store"});
+    if (!res.ok) {
+      document.getElementById('quizContainer').innerText = 'sample.csv not found.';
+      console.error('HTTP error fetching sample.csv:', res.status);
+      return;
+    }
+    const text = await res.text();
+    const data = csvToObjects(text);
+    if (!data || data.length === 0) {
+      document.getElementById('quizContainer').innerText = 'No questions found.';
+      return;
+    }
+    window.quizData = data;
+    renderQuiz(data);
+  } catch (err) {
+    console.error('Error loading sample.csv:', err);
+    document.getElementById('quizContainer').innerText = 'Error loading sample.csv.';
+  }
+}
+
+loadCSVandRender();
+
+// Submit handler
+document.getElementById('submitBtn').addEventListener('click', () => {
+  let score = 0;
+  const data = window.quizData || [];
+  data.forEach((q,i) => {
+    const sel = document.querySelector(`input[name="q${i}"]:checked`);
+    const fb = document.getElementById(`fb-${i}`);
+    const optionMap = {};
+    q.options.forEach((opt, idx) => { optionMap[String.fromCharCode(65 + idx)] = opt; });
+    const correctText = optionMap[q.answer.toUpperCase()] || '';
+
+    // Highlight options
+    document.querySelectorAll(`input[name="q${i}"]`).forEach(inp => {
+      inp.disabled = true;
+      const label = inp.parentElement;
+      label.classList.remove('correct','wrong');
+      if(inp.value === correctText) label.classList.add('correct');
+      if(inp.checked && inp.value !== correctText) label.classList.add('wrong');
+    });
+
+    if(sel && sel.value === correctText){ fb.innerText='✅ Correct'; score++; }
+    else { fb.innerText='❌ Wrong — correct: ' + correctText; }
+  });
+  document.getElementById('score').innerText = `Score: ${score} / ${data.length}`;
+  document.getElementById('submitBtn').disabled = true;
+
+  // Show retry button
+  const retryBtn = document.getElementById('retryBtn');
+  retryBtn.style.display = 'inline-block';
+});
+
+// Retry button
+document.getElementById('retryBtn').addEventListener('click', () => {
+  const data = window.quizData || [];
+  data.forEach((q,i) => {
+    document.getElementById(`fb-${i}`).innerText = '';
+    document.querySelectorAll(`input[name="q${i}"]`).forEach(inp => {
+      inp.disabled = false; inp.checked = false; inp.parentElement.classList.remove('correct','wrong');
+    });
+  });
+  document.getElementById('score').innerText = '';
+  document.getElementById('submitBtn').disabled = false;
+  document.getElementById('retryBtn').style.display = 'none';
+});
+</script>
+</body>
+</html>
