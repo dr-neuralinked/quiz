@@ -1,0 +1,51 @@
+question,Opt1,Opt2,Opt3,Opt4,answer
+"Q1. A 55-year-old diabetic man presents with fever, cough, and hypotension. Chest X-ray shows right lower lobe pneumonia. What is the best next step?",Wait for cultures before therapy,Start IV fluids and antibiotics after cultures,Give oral antibiotics only,Start steroids immediately,B
+Q2. A patient with sepsis has MAP 55 mmHg despite fluids. What should be done next?,Stop fluids,Start norepinephrine infusion,Give steroids first,Transfuse blood,B
+"Q3. A 28-year-old has fever, splenomegaly, and pancytopenia. How to differentiate kala-azar from miliary TB?",Do LFTs,Bone marrow for LD bodies and AFB,Serum electrolytes,Peripheral smear,B
+"Q4. After 6 days of antibiotics, a patient develops fever, rash, eosinophilia, and high creatinine. Diagnosis?",Sepsis,DRESS syndrome,Vasculitis,Viral rash,B
+Q5. A patient with CURB-65 score 1 should be managed:,In ICU,As outpatient with oral antibiotics,Hospitalized for IV antibiotics,Quarantined,B
+Q6. COPD patient develops fever and sputum with gram-negative bacilli. Best antibiotic choice principle?,Always use vancomycin,Cover likely COPD pathogens guided by resistance,Avoid antibiotics,Use antifungal therapy,B
+Q7. ICU patient with infected central line and fever. Next step?,Wait 72 hrs,"Remove line, culture tip, start empirical therapy",Swab site only,Start antifungal,B
+Q8. Traveler with fever and multiple ring forms in RBCs. Management?,Oral chloroquine,IV artesunate,Primaquine only,Steroids,B
+Q9. Typhoid relapse after fluoroquinolones. Best next step?,Stop drugs,Repeat Widal test,"Bone marrow culture, give ceftriaxone/azithro",Start anti-malarial,C
+Q10. Early empiric antibiotic therapy in sepsis is important because:,It increases mortality,It reduces mortality if started after cultures,It prevents resistance,It should be avoided,B
+Q11. Suspected endocarditis in IV drug user. Best empirical coverage?,Vancomycin + Gram-negative agent,Penicillin only,Antivirals,Wait for TEE,A
+Q12. Patient on antibiotics develops diarrhea and leukocytosis. Likely cause?,Viral gastroenteritis,C. difficile colitis,Amebiasis,Food poisoning,B
+"Q13. Fever, jaundice, conjunctival suffusion after flood exposure. Diagnosis?",Hepatitis A,Leptospirosis,Dengue,Malaria,B
+"Q14. Fever, myalgia, thrombocytopenia, rising hematocrit. Diagnosis?",Influenza,Dengue with warning signs,Typhoid,Leptospirosis,B
+"Q15. Fever with focal neuro deficit, suspected brain abscess. Initial step?","CT scan, start ceftriaxone + metronidazole",Start steroids only,Surgery first,Oral therapy,A
+Q16. Fever every 48 hours with splenomegaly. Likely parasite?,Falciparum,Vivax,Malariae,Babesia,B
+Q17. Severe malaria with altered sensorium. Major complication?,Hypertension,Cerebral malaria and hypoglycemia,Anemia only,ARDS,B
+Q18. Relapsed typhoid resistant to fluoroquinolones. Drug of choice?,Azithromycin or ceftriaxone,Doxycycline,Amoxicillin,Chloramphenicol,A
+Q19. NS1 antigen positive fever. Best management?,Give aspirin,"Maintain fluids, avoid NSAIDs",Start antibiotics,Start anticoagulants,B
+Q20. Common delayed complication of artesunate therapy?,Renal failure,Delayed hemolysis,CNS toxicity,Hypoglycemia,B
+Q21. Farm worker with leptospirosis and renal failure. Preferred drug?,Azithromycin,Penicillin or ceftriaxone,Isoniazid,No antibiotics,B
+Q22. Dengue patient with rising hematocrit and stable BP. Next step?,Transfuse platelets,IV fluids and monitor,Start steroids,Observe only,B
+Q23. Why can malaria RDT stay positive after cure?,Cross-reactivity,Persistent HRP2 antigen,Drug resistance,New infection,B
+Q24. Relative bradycardia and rose spots. Suggestive diagnosis?,Typhoid,Leptospirosis,Malaria,Dengue,A
+Q25. Example of active malaria case detection:,Patient visiting clinic,Screening household contacts,Annual survey only,Reporting case online,B
+Q26. Scrub typhus with ARDS. Treatment?,Doxycycline or IV azithromycin,Fluoroquinolone,Steroids only,No treatment,A
+Q27. Non-caseating granuloma on biopsy. Possible cause?,TB only,Brucellosis or fungal infection,Viral infection,Cancer,B
+Q28. High chloroquine resistance area. Drug policy?,Continue chloroquine,Use ACT,Use primaquine alone,Use SP only,B
+Q29. Early marker of severe sepsis?,Leukocytosis,Serum lactate elevation,Low Hb,Urine culture,B
+"Q30. Fever, purpura, hypotension. Best step?",Start IV antibiotics and fluids,Wait for culture,Use antivirals,Observe at home,A
+Q31. Sputum positive after 2 months of TB therapy. Next step?,Continue same drugs,Do GeneXpert and DST,Switch to second-line,Stop all drugs,B
+Q32. HIV patient with CD4 180. When to start ART?,After 6 months,Immediately,Only if CD4 <50,Not indicated,B
+Q33. Suspected smear-negative TB. Next investigation?,Stop evaluation,Do GeneXpert or BAL culture,Start steroids,Do Widal test,B
+Q34. Key to control antibiotic resistance?,Use broad-spectrum in all,Stewardship and de-escalation,Stop all antibiotics,Increase doses,B
+Q35. HIV patient with miliary shadows. Likely cause?,Pneumonia,Disseminated TB,Sarcoidosis,ARDS,B
+Q36. Empirical drug for MRSA pneumonia?,Vancomycin or linezolid,Ceftriaxone,Amoxicillin,Azithromycin,A
+Q37. TB patient with high ALT. Next step?,Continue all drugs,"Stop hepatotoxic drugs, reintroduce later",Double dose,Add herbal meds,B
+Q38. Culture-negative endocarditis likely due to:,Fungal infection,HACEK or Coxiella species,Viral infection,Mycoplasma,B
+Q39. MDR-TB means resistance to:,Isoniazid and rifampicin,Pyrazinamide,Ethambutol only,Streptomycin only,A
+Q40. Culture shows narrow drug sensitivity. Best action?,Continue carbapenem,De-escalate antibiotic,Stop all therapy,Add second broad drug,B
+Q41. HIV-exposed infant diagnosis test?,Antibody test,PCR at 4–6 weeks,Widal test,Wait till 5 years,B
+Q42. Prevent nosocomial TB by:,Isolate and ensure ventilation,No separation needed,Mask optional,Treat only MDR cases,A
+Q43. Cervical nodes with caseation. Next step?,Start empiric ATT,Send for AFB and GeneXpert,Observe,Give antibiotics,B
+Q44. Ventilator pneumonia likely due to:,Pseudomonas or MRSA,Pneumococcus,Influenza,Chlamydia,A
+Q45. HIV patient on ART develops fever and lymphadenopathy. Cause?,IRIS,Drug allergy,Reinfection,ART failure,A
+"Q46. Fever, jaundice, hypotension, malaria vs leptospirosis suspected. Approach?",Wait for results,Send cultures and start antibiotics/antimalarial,Give paracetamol only,Discharge home,B
+Q47. PUO workup should be:,Random tests,Stepwise and targeted,Antibiotics only,No investigations,B
+Q48. Diabetic foot ulcer growing Pseudomonas sensitive to colistin. Best step?,No treatment,Use colistin with renal monitoring,Oral amoxicillin,Discharge,B
+Q49. Cavitary lung lesion grows Nocardia. Next step?,Continue ATT,Start TMP-SMX,Use amoxicillin,Observe only,B
+Q50. Best vector control for dengue in cities?,Source reduction and cleanup,Bed nets only,Vaccinate all children,Treat cases only,A
